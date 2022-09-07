@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  nginx:
+    build: .
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./site:/app/site
+    ports:
+      - 8266:80
