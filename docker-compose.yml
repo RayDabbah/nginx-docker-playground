@@ -8,3 +8,5 @@ services:
       - ./site:/app/site
     ports:
       - 8206:8206
+    extra_hosts:
+      - "parent:host-gateway"
