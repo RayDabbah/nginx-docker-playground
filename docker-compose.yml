@@ -6,8 +6,10 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./site:/app/site
+      - ./php-app:/app/php-app/
     ports:
       - 8206:8206
       - 8216:8216
+      - 8217:8217
     extra_hosts:
       - "parent:host-gateway"
