@@ -23,8 +23,6 @@ RUN apt-get install -y vim \
 
 RUN sed  -i 's/^listen\s*=.*$/listen = 9000/g' /etc/php/8.1/fpm/pool.d/www.conf
 
-RUN mkdir /php-app && chown -R www-data:www-data /php-app
-
 EXPOSE 9000
 
 CMD ["/usr/sbin/php-fpm8.1", "-F", "-R"]
