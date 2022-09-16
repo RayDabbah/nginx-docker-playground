@@ -21,10 +21,13 @@ RUN apt-get install -y vim \
     php8.1-mbstring \
     composer
 
-RUN sed -i 's/;listen.mode/listen.mode/g' /etc/php/8.1/fpm/pool.d/www.conf 
+RUN sed  -i 's/^listen\s*=.*$/listen = 9000/g' /etc/php/8.1/fpm/pool.d/www.conf
 
+RUN mkdir /php-app && chown -R www-data:www-data /php-app
 
-CMD ["/usr/sbin/php-fpm8.1", "-F"]
+EXPOSE 9000
+
+CMD ["/usr/sbin/php-fpm8.1", "-F", "-R"]
 
 
 

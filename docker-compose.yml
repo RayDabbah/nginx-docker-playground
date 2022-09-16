@@ -8,10 +8,11 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./site:/app/site
+      - ./php:/php-app
     ports:
-      - 8206:8206
-      - 8216:8216
-      - 8217:8217
+      - "8206:8206"
+      - "8216:8216"
+      - "8217:8217"
     depends_on:
       - php
     extra_hosts:
@@ -20,6 +21,8 @@ services:
     build: 
       dockerfile: php.dockerfile
       context: .
-    working_dir: /app
+    working_dir: /php-app
+    ports:
+      - "9000:9000"
     volumes:
-      - ./php:/app
+      - ./php:/php-app
